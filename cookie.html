@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Example</title>
+</head>
+<body>
+    <h1>Cookie Example</h1>
+    <p>Click the button below to set a cookie:</p>
+    <button onclick="setCookie()">Set Cookie</button>
+    <div id="cookie-container"></div>
+
+    <footer>
+		<p>&copy; Mili Khatri 2022</p>
+	</footer>
+
+    <script>
+        function setCookie() {
+            document.cookie = "cookie=Hi, I'm Cookie!;";
+            location.reload();
+        }
+
+        function getCookie(cookieName) {
+            var cookies = document.cookie.split("; ");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].split("=");
+                if (cookie[0] === cookieName) {
+                    return cookie[1];
+                }
+            }
+            return null;
+        }
+
+        var myCookie = getCookie("cookie");
+        if (myCookie) {
+            var cookieContainer = document.getElementById("cookie-container");
+            var cookieDiv = document.createElement("div");
+            cookieDiv.textContent = "Cookie: " + myCookie;
+            cookieContainer.appendChild(cookieDiv);
+        }
+    </script>
+</body>
+</html>
